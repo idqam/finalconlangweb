@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { useSymbolContext } from "../context/SymbolContext";
 import { ConlangResponse, generateConlang } from "@/services/api";
 import GenButton from "./GenButton";
+import { UserLetterMap } from "./UserLetterMap";
 
 interface CenteredContainerProps {
   children: React.ReactNode;
@@ -28,7 +29,6 @@ const CenteredContainer: React.FC<CenteredContainerProps> = ({
   };
 
   const data2 = data || "";
-  
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-blue-200 mt-0">
@@ -39,6 +39,7 @@ const CenteredContainer: React.FC<CenteredContainerProps> = ({
           </GenButton>
         </div>
         {children}
+        
       </div>
     </div>
   );

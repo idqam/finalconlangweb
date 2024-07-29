@@ -5,6 +5,7 @@ import SymbolSelector from "./components/SymbolSelector";
 import { SymbolProvider } from "./context/SymbolContext";
 import { ConlangResponse } from "@/services/api";
 import MappingList from "./components/MappingList";
+import { UserLetterMap } from "./components/UserLetterMap";
 
 const Home: React.FC = () => {
   const [generatedConlang, setGeneratedConlang] =
@@ -24,6 +25,7 @@ const Home: React.FC = () => {
         ) : (
           <></>
         )}
+        <UserLetterMap />
       </CenteredContainer>
     </SymbolProvider>
   );
