@@ -18,6 +18,7 @@ const GenButton: React.FC<StyledButtonProps> = ({
           text-lg
           px-6
           py-3
+          mb-14
           rounded-lg
           shadow-md
           bg-ivory

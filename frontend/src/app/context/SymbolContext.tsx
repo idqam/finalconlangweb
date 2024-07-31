@@ -8,7 +8,7 @@ interface SymbolContextType {
   activeConsonants: string[];
   toggleSymbol: (symbol: string) => void;
   isSymbolActive: (symbol: string) => boolean;
-  inputMapToPhoneme: Map<string, Map<string, string>>;
+  inputMapToPhoneme: Map<string, string>;
 }
 
 const SymbolContext = createContext<SymbolContextType | undefined>(undefined);
@@ -28,9 +28,9 @@ interface SymbolProviderProps {
 export const SymbolProvider: React.FC<SymbolProviderProps> = ({ children }) => {
   const [activeVowels, setActiveVowels] = useState<string[]>([]);
   const [activeConsonants, setActiveConsonants] = useState<string[]>([]);
-  const inputMapToPhoneme: Map<string, Map<string, string>> = new Map<
+  const inputMapToPhoneme: Map<string, string> = new Map<
     string,
-    Map<string, string>
+    string
   >();
 
   const toggleSymbol = (symbol: string) => {

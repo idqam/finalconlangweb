@@ -12,18 +12,17 @@ const SymbolSelector: React.FC = () => {
   };
 
   return (
-    <>
-      
+    <div id = "button-ipa-container" >
       <div className="flex space-x-4 mb-6">
-        <div className="w-1/2">
+        <div className="">
           <IPAButtonGrid symbols={vowels} header="Vowels" />
         </div>
-        <div className="w-1/2">
+        <div className="">
           <IPAButtonGrid symbols={consonants} header="Consonants" />
         </div>
       </div>
       <SelectedSymbols />
-    </>
+    </div>
   );
 };
 

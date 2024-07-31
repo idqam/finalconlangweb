@@ -4,8 +4,7 @@ import CenteredContainer from "./components/CenteredContainer";
 import SymbolSelector from "./components/SymbolSelector";
 import { SymbolProvider } from "./context/SymbolContext";
 import { ConlangResponse } from "@/services/api";
-import MappingList from "./components/MappingList";
-import { UserLetterMap } from "./components/UserLetterMap";
+import SymbolBox from "./components/SymbolBox";
 
 const Home: React.FC = () => {
   const [generatedConlang, setGeneratedConlang] =
@@ -20,12 +19,11 @@ const Home: React.FC = () => {
     <SymbolProvider>
       <CenteredContainer onGenerateConlang={handleGenerateConlang}>
         <SymbolSelector />
-        {generatedConlang?.words ? (
-          <MappingList stringList={generatedConlang?.words} />
-        ) : (
-          <></>
-        )}
-        <UserLetterMap />
+        <div className="flex flex-wrap justify-start mt-10 border-2 rounded-lg space-x-4 m-0 p-0">
+          <SymbolBox leftSymbol={"PLACEHOLDER"} rightSymbol={"PLACEHOLDER"} />
+          <SymbolBox leftSymbol={"PLACEHOLDER"} rightSymbol={"PLACEHOLDER"} />
+          <SymbolBox leftSymbol={"PLACEHOLDER"} rightSymbol={"PLACEHOLDER"} />
+        </div>
       </CenteredContainer>
     </SymbolProvider>
   );

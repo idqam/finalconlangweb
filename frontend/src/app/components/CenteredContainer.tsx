@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import { useSymbolContext } from "../context/SymbolContext";
 import { ConlangResponse, generateConlang } from "@/services/api";
 import GenButton from "./GenButton";
-import { UserLetterMap } from "./UserLetterMap";
 
 interface CenteredContainerProps {
   children: React.ReactNode;
@@ -31,15 +30,15 @@ const CenteredContainer: React.FC<CenteredContainerProps> = ({
   const data2 = data || "";
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-blue-200 mt-0">
-      <div className="bg-red-400 p-8 rounded-lg shadow-lg max-w-none">
-        <div className="flex justify-center">
+    <div className="flex justify-center flex-col items-center min-h-screen bg-blue-200 mt-0">
+      <div className="m-10">PLACE HOLDER DIV FOR INTRO</div>
+      <div className="bg-red-400 p-8 rounded-lg shadow-lg max-w-none ">
+        <div className="flex justify-center items-center">
           <GenButton onClick={handleGenerateConlang} className="mb-6">
             Generate Language
           </GenButton>
         </div>
         {children}
-        
       </div>
     </div>
   );
