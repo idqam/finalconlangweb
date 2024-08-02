@@ -1,14 +1,15 @@
 import { IPA_VOWELS, IPA_CONSONANTS } from "@/constants/ipaSymbols";
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useCallback,
+} from "react";
+import { SymbolContextType } from "../types/SymbolContextType";
 
-interface SymbolContextType {
-  vowels: string[];
-  consonants: string[];
-  activeVowels: string[];
-  activeConsonants: string[];
-  toggleSymbol: (symbol: string) => void;
-  isSymbolActive: (symbol: string) => boolean;
-  inputMapToPhoneme: Map<string, string>;
+interface SymbolProviderProps {
+  children: ReactNode;
 }
 
 const SymbolContext = createContext<SymbolContextType | undefined>(undefined);
@@ -21,17 +22,10 @@ export const useSymbolContext = () => {
   return context;
 };
 
-interface SymbolProviderProps {
-  children: ReactNode;
-}
-
 export const SymbolProvider: React.FC<SymbolProviderProps> = ({ children }) => {
   const [activeVowels, setActiveVowels] = useState<string[]>([]);
   const [activeConsonants, setActiveConsonants] = useState<string[]>([]);
-  const inputMapToPhoneme: Map<string, string> = new Map<
-    string,
-    string
-  >();
+  const [inputMapToPhoneme, setInputMapToPhoneme] = useState(new Map());
 
   const toggleSymbol = (symbol: string) => {
     if (IPA_VOWELS.includes(symbol)) {
@@ -53,6 +47,14 @@ export const SymbolProvider: React.FC<SymbolProviderProps> = ({ children }) => {
     return activeVowels.includes(symbol) || activeConsonants.includes(symbol);
   };
 
+  const updateInputMapToPhoneme = useCallback((key: any, value: any) => {
+    setInputMapToPhoneme((prevMap) => {
+      const newMap = new Map(prevMap);
+      newMap.set(key, value);
+      return newMap;
+    });
+  }, []);
+
   const value = {
     vowels: IPA_VOWELS,
     consonants: IPA_CONSONANTS,
@@ -61,6 +63,7 @@ export const SymbolProvider: React.FC<SymbolProviderProps> = ({ children }) => {
     toggleSymbol,
     isSymbolActive,
     inputMapToPhoneme,
+    updateInputMapToPhoneme,
   };
 
   return (

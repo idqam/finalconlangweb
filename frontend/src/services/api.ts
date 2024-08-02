@@ -6,6 +6,8 @@ const API_BASE_URL = "http://localhost:8000";
 export interface ConlangRequest {
   vowels: string[];
   consonants: string[];
+  //TODO IMPLEMENT CONLANG REQUEST WITH USER MAPPING 
+  
 }
 
 export interface ConlangResponse {

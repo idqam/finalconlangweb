@@ -7,9 +7,6 @@ import GenButton from "./GenButton";
 const SymbolSelector: React.FC = () => {
   const { vowels, consonants } = useSymbolContext();
 
-  const handleGenerateClick = () => {
-    console.log("Generate button clicked");
-  };
 
   return (
     <div id = "button-ipa-container" >

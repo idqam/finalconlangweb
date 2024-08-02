@@ -7,7 +7,7 @@ interface IPAButtonProps {
   className?: string;
 }
 
-const IPAButton: React.FC<IPAButtonProps> = ({ symbol, className }) => {
+const IPAButton: React.FC<IPAButtonProps> = ({ symbol }) => {
   const { toggleSymbol, isSymbolActive } = useSymbolContext();
 
   return (
@@ -18,8 +18,8 @@ const IPAButton: React.FC<IPAButtonProps> = ({ symbol, className }) => {
         transition-all duration-300 ease-in-out
         ${
           isSymbolActive(symbol)
-            ? "bg-hazel-periwinkle text-white shadow-md bg-[length:200%_200%]"
-            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            ? "bg-teal-800 text-white shadow-lg bg-[length:200%_200%]"
+            : "bg-gray-200 text-gray-700 hover:bg-red-300"
         }
       `}
     >

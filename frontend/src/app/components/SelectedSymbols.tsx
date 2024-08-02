@@ -4,8 +4,12 @@ import PopupSelectedSymbols from "./PopupSelectedSymbols";
 import { ErrModal } from "./modals/ErrModal";
 
 const SelectedSymbols: React.FC = () => {
-  const { activeVowels, activeConsonants, inputMapToPhoneme } =
-    useSymbolContext();
+  const {
+    activeVowels,
+    activeConsonants,
+    inputMapToPhoneme,
+    updateInputMapToPhoneme,
+  } = useSymbolContext();
 
   const [errorModal, setErrorModal] = useState({ isOpen: false, message: "" });
 
@@ -35,14 +39,14 @@ const SelectedSymbols: React.FC = () => {
     if (input.length < 3) {
       setErrorModal({
         isOpen: true,
-        message: "Input must be at least 3 characters long.",
+        message: "Input must be at least 1 character long.",
       });
 
       return;
     }
     setPopup({ ...popup, show: false });
     const splitting = input.split(">");
-    inputMapToPhoneme.set(splitting[0], splitting[1]);
+    updateInputMapToPhoneme(splitting[0], splitting[1]);
     console.log(inputMapToPhoneme);
   };
 
@@ -52,33 +56,35 @@ const SelectedSymbols: React.FC = () => {
 
   return (
     <>
-      <div className="mt-6 flex space-x-4 m-0">
-        <div className="w-1/2 p-4 bg-gray-100 rounded-lg">
+      <div className="mt-6 flex space-x-4 m-0 justify-evenly">
+        <div className="w-1/2 p-10 bg-gray-100 rounded-lg">
           <div className="flex justify-center">
-            <h3 className="text-lg font-semibold mb-2">Selected Vowels</h3>
+            <h3 className="text-xl font-semibold mb-4">Selected Vowels</h3>
           </div>
-          <div className="flex flex-wrap gap-2 max-w-60  ml-16">
+          <div className="flex flex-wrap gap-2 max-w-60 justify-center justify-items-center  ml-10 max-h-80">
             {activeVowels.map((vowel, index) => (
               <button
                 key={index}
                 onClick={(e) => handleClick(vowel, e)}
-                className=" flex-1 bg-blue-200 max-w-10 min-w-5 text-center rounded-md text-lg"
+                className="  flex-1 bg-blue-200 max-w-20 min-w-16 text-center rounded-md text-lg"
               >
                 {vowel}
               </button>
             ))}
           </div>
         </div>
-        <div className="w-1/2 p-4 bg-gray-100 rounded-lg">
+        <div className="w-1/2 p-10 bg-gray-100 rounded-lg">
           <div className="flex justify-center">
-            <h3 className="text-lg font-semibold mb-2">Selected Consonants</h3>
+            <h3 className="text-xl font-semibold mb-4 mt-0">
+              Selected Consonants
+            </h3>
           </div>
-          <div className="flex flex-wrap gap-2 max-w-60 justify-center justify-items-center ml-16">
+          <div className="flex flex-wrap gap-2 max-w-60 justify-center justify-items-center ml-10 ">
             {activeConsonants.map((consonant, index) => (
               <button
                 key={index}
                 onClick={(e) => handleClick(consonant, e)}
-                className="  flex-1 bg-blue-200 max-w-10 min-w-5 text-center rounded-md text-lg"
+                className="  flex-1 bg-blue-200 max-w-16 min-w-16 text-center rounded-md text-lg"
               >
                 {consonant}
               </button>

@@ -15,14 +15,15 @@ const GenButton: React.FC<StyledButtonProps> = ({
     <button
       onClick={onClick}
       className={`
-          text-lg
+          text-xl
+          text-semibold
+          text-black
           px-6
           py-3
-          mb-14
+          mb-16
           rounded-lg
           shadow-md
           bg-ivory
-          text-gray-800
           hover:bg-ivory-dark
           transition duration-300 ease-in-out
           focus:outline-none focus:ring-2 focus:ring-ivory-dark focus:ring-opacity-50
