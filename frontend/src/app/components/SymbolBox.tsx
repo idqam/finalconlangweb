@@ -8,14 +8,12 @@ interface SymbolBoxProps {
 const SymbolBox = ({ leftSymbol, rightSymbol }: SymbolBoxProps) => {
   return (
     <div className="flex items-center p-2 m-0 bg-red-400 rounded-lg shadow-md ">
-      {/* Left Symbol Box */}
       <div className=" flex items-center justify-center bg-blue-200 rounded-md p-2 max-w-10">
         <div className="text-sm font-bold text-center break-words max-w-sm">
           {leftSymbol}
         </div>
       </div>
 
-      {/* Arrow */}
       <svg
         className="w-4 h-4 text-black mx-4"
         fill="none"
@@ -31,7 +29,6 @@ const SymbolBox = ({ leftSymbol, rightSymbol }: SymbolBoxProps) => {
         />
       </svg>
 
-      {/* Right Symbol Box */}
       <div className=" flex items-center justify-center bg-blue-200 rounded-md p-2 max-w-10">
         <div className="text-sm font-bold text-center break-words max-w-sm">
           {rightSymbol}

@@ -7,7 +7,7 @@ export const ErrModal = ({ isOpen, onClose, title, children }: any) => {
     if (isOpen) {
       setIsRendered(true);
     } else {
-      const timer = setTimeout(() => setIsRendered(false), 300); // match this with your transition duration
+      const timer = setTimeout(() => setIsRendered(false), 300);
       return () => clearTimeout(timer);
     }
   }, [isOpen]);

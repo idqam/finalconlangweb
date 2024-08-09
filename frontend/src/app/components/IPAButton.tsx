@@ -1,4 +1,3 @@
-// components/IPAButton.tsx
 import React from "react";
 import { useSymbolContext } from "../context/SymbolContext";
 
